@@ -7,43 +7,51 @@ class DatosMeteorologicos:
 
     def procesar_datos(self) -> Tuple[float, float, float, float, str]:
         with open(self.nombre_archivo, 'r', encoding='utf-8') as f:
-            line_data =  f.read()
 
-        def _direccion_viento_a_grados(self, direccion_viento: str) -> float:
-            # Convertir dirección del viento a grados
-            direccion_viento = direccion_viento.strip()
-            if direccion_viento == 'N':
-                return 0
-            elif direccion_viento == 'NNE':
-                return 22.5
-            elif direccion_viento == 'NE':
-                return 45
-            elif direccion_viento == 'ENE':
-                return 67.5
-            elif direccion_viento == 'E':
-                return 90
-            elif direccion_viento == 'ESE':
-                return 112.5
-            elif direccion_viento == 'SE':
-                return 135
-            elif direccion_viento == 'SSE':
-                return 157.5
-            elif direccion_viento == 'S':
-                return 180
-            elif direccion_viento == 'SSW':
-                return 202.5
-            elif direccion_viento == 'SW':
-                return 225
-            elif direccion_viento == 'WSW':
-                return 247.5
-            elif direccion_viento == 'W':
-                return 270
-            elif direccion_viento == 'WNW':
-                return 292.5
-            elif direccion_viento == 'NW':
-                return 315
-            elif direccion_viento == 'NNW':
-                return 337.5
+            temperatura_total = 0
+            humedad_total = 0
+            presion_total = 0
+            velocidad_total_viento = 0
 
+            for linea in f:
+                if linea.startswith("Estación"):
+                    estacion = linea.split(':')
+                    print(estacion)
+
+                elif linea.startswith("Latitud"):
+                    latitud = linea.split(':')
+                    print(latitud)
+
+                elif linea.startswith("Longitud"):
+                    longitud = linea.split(':')
+                    print(longitud)
+
+                elif linea.startswith("Fecha"):
+                    fecha = linea.split(':')
+                    print(fecha)
+
+                elif linea.startswith("Hora"):
+                    hora = linea.split(':')
+                    print(hora)
+
+                elif linea.startswith("Temperatura"):
+                    temperatura = linea.split(':')
+                    temperatura_total += temperatura
+                    print(temperatura_total)
+
+                elif linea.startswith("Humedad"):
+                    humedad = linea.split(':')
+                    humedad_total += humedad
+                    print(humedad_total)
+
+                elif linea.startswith("Presión"):
+                    presion = linea.split(':')
+                    presion_total += presion
+                    print(presion_total)
+
+                elif linea.startswith("Viento"):
+                    viento = linea.split(':')
+                    velocidad_total_viento += viento[0]
+                    print(velocidad_total_viento)
 
         DatosMeteorologicos(r'C:\Users\Bas\PycharmProjects\ActividadParticipacion9\DatosMeteorologicos\datos_meteorologicos.txt')
