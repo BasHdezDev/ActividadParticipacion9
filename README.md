@@ -1,0 +1,1 @@
+This is a first try of solving the participation problem number 9, ill try my best
