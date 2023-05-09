@@ -46,7 +46,8 @@ class DatosMeteorologicos:
                 elif linea.startswith("Viento"):
                     viento = linea.split(':')
                     velocidad_total_viento += viento[0]
+
             print(data)
 
 
-        DatosMeteorologicos(r'C:\Users\Bas\PycharmProjects\ActividadParticipacion9\DatosMeteorologicos\datos_meteorologicos.txt')
+DatosMeteorologicos(r'C:\Users\Bas\PycharmProjects\ActividadParticipacion9\datos_meteorologicos.txt')
